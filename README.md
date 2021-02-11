@@ -1,4 +1,4 @@
-#MongDB Project
+# MongDB Project
 
 개발툴 : Intellij
 
