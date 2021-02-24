@@ -1,6 +1,10 @@
+server:
+  address: localhost
+  port: 8000
 spring:
+  profiles: dev
   data:
     mongodb:
       host: localhost
-      port: 8000
+      port: 27017
       database: test
