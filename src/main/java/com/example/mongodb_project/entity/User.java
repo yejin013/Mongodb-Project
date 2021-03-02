@@ -18,7 +18,7 @@ public class User {
     private String password;
 
     @Builder
-    public User(String userID, String name, String address, String password){
+    public User(String userID, String name, String address, String password) {
         this.userID = userID;
         this.name = name;
         this.address = address;

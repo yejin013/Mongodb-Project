@@ -4,26 +4,34 @@ import com.example.mongodb_project.entity.User;
 import com.example.mongodb_project.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.*;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @AllArgsConstructor
-@Controller
-public class UserController {
+@RestController
+public class UserController{
     private final UserService userService;
 
-    @PostMapping(value = "/user/signup")
-    public ResponseEntity<User> save(@RequestBody User user) {
-        return new ResponseEntity<User>(userService.insert(user), HttpStatus.OK);
+    @PostMapping(value = "")
+    @ResponseStatus(value = HttpStatus.OK)
+    public User save(@RequestBody User user) {
+        return userService.insert(user);
     }
 
-    @GetMapping(value = "/user/select")
-    public ResponseEntity<List<User>> show() {
-        return new ResponseEntity<List<User>>(userService.selectAll(), HttpStatus.OK);
+    @GetMapping(value = "/hello")
+    @ResponseStatus(value = HttpStatus.OK)
+    public String print() {
+        return "hello";
+    }
+
+    @GetMapping(value = "")
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<User> show() {
+        return userService.selectAll();
     }
 }
